@@ -1,0 +1,35 @@
+<div id="search" class="container-fluid">
+  <div id="search-heading" class="row">
+    <div class="col-xs-12">
+      <h1 class="text-center">Search for Jobs</h1>
+    </div>
+  </div>
+  <div id="search-box" class="row">
+    <div class="panel panel-default col-xs-12 col-sm-8 col-sm-push-2 col-md-4 col-md-push-4">
+      <div class="panel-body">
+        <form [formGroup]="searchForm" (submit)="submitSearch(searchForm.value, searchForm.valid)">
+          <div class="form-group">
+            <label>Desired Job Title</label>
+            <input type="text" class="form-control" formControlName="query">
+            <small [hidden]="searchForm.controls.query.valid || (searchForm.controls.query.pristine && !searchFormSubmitted)" class="text-danger">Job Title is required</small>
+          </div>
+          <div class="form-group">
+            <label for="">ZIP Code</label>
+            <input type="text" class="form-control" formControlName="zip">
+            <small [hidden]="searchForm.controls.zip.valid || (!searchFormSubmitted)" class="text-danger">Invalid or missing zip code</small>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Search for Jobs</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="search-footer" class="row">
+    <div class="col-xs-12">
+      <p>
+        <a routerLink="/login">Admin Login</a>
+      </p>
+    </div>
+  </div>
+</div>

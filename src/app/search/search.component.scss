@@ -1,0 +1,27 @@
+#search {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 100vh;
+  background: #f6f6f6;
+}
+
+#search-heading {
+  flex: 0;
+}
+
+#search-box {
+  flex: 1;
+  flex-basis: 0;
+}
+
+#search-footer {
+  flex: 0;
+  padding: 20px 10px;
+  background: #fff;
+  text-align: right;
+
+  p {
+    margin: 0;
+  }
+}

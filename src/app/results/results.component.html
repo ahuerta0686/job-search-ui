@@ -1,0 +1,39 @@
+<div id="results" class="container-fluid">
+  <div id="results-heading" class="row">
+    <div class="col-xs-12">
+      <h1>Search Results</h1>
+    </div>
+  </div>
+  <div id="results-body" class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Showing results for: <em>{{searchQuery}}</em> near <em>{{zipCode}}</em></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let job of jobs" class="panel panel-default col-xs-12">
+        <div class="panel-body">
+          <h3>{{job.jobtitle}} @ {{job.company}}</h3>
+          <h4>{{job.formattedLocation}} ({{job.country}})</h4>
+          <h5>Posted {{job.formattedRelativeTime}}</h5>
+          <p>{{job.snippet}}</p><p>
+            <a class="btn btn-primary btn-sm" (click)="tracking(job, $event)" href="{{job.url}}" target="_blank">See more on Indeed</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <nav>
+          <ul class="pagination">
+            <li [class.disabled]="page === 1"><a [class.disabled]="page === 1" [routerLink]="[]" [queryParams]="{page: page - 1}">&laquo;</a></li>
+            <li *ngFor="let pageNo of pages" [class.active]="pageNo === page"><a [routerLink]="[]" [queryParams]="{page: pageNo}">{{pageNo}}</a></li>
+            <li [class.disabled]="page === pages?.length"><a [class.disabled]="page === pages?.length" [routerLink]="[]" [queryParams]="{page: page + 1}">&raquo;</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div id="results-footer" class="row">
+    <a routerLink="/">Back to Search</a> | 
+    <span id=indeed_at><a href="http://www.indeed.com/">jobs</a> by <a href="http://www.indeed.com/" title="Job Search"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search"></a></span>
+  </div>
+</div>

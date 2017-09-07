@@ -1,0 +1,54 @@
+<div id="admin" class="container-fluid">
+  <div id="admin-heading" class="row">
+    <div class="col-xs-12">
+      <h1>Admin Dashboard</h1>
+    </div>
+  </div>
+  <div id="admin-body" class="container">
+    <div *ngIf="trackingSnippet" class="row">
+      <div class="col-xs-12">
+        <h2>Embed Tracking Snippet</h2>
+        <div [hidden]="!snippetUpdated" class="alert alert-success">Tracking snippet updated</div>
+        <div [hidden]="!snippetFailed" class="alert alert-danger">Tracking snippet failed to update</div>
+        <textarea name="" id="" rows="10" [(ngModel)]="trackingSnippet.html" placeholder="None set"></textarea>
+        <button class="btn btn-primary" (click)="updateTrackingSnippet()">Update Tracking Snippet</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Recent Search Queries</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <tr>
+              <th>Search Term</th>
+              <th>Zip Code</th>
+              <th>IP Address</th>
+              <th>Searched At</th>
+            </tr>
+            <tr *ngIf="!searches">
+              <td colspan="4" class="text-center">Loading...</td>
+            </tr>
+            <tr *ngFor="let search of searches">
+              <td>{{search.query}}</td>
+              <td>{{search.zip}}</td>
+              <td>{{search.ip}}</td>
+              <td>{{search.searchedAt | date: 'medium'}}</td>
+            </tr>
+          </table>
+        </div>
+        <nav>
+          <ul class="pagination">
+            <li [class.disabled]="page === 1"><a [class.disabled]="page === 1" routerLink="/admin" [queryParams]="{page: page - 1}">&laquo;</a></li>
+            <li *ngFor="let pageNo of pages" [class.active]="pageNo === page"><a routerLink="/admin" [queryParams]="{page: pageNo}">{{pageNo}}</a></li>
+            <li [class.disabled]="page === pages?.length"><a [class.disabled]="page === pages?.length" routerLink="/admin" [queryParams]="{page: page + 1}">&raquo;</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div id="admin-footer" class="row">
+    <div class="col-xs-12">
+      <p><a routerLink="/">Home</a></p>
+    </div>
+  </div>
+</div>

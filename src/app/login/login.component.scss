@@ -1,0 +1,27 @@
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 100vh;
+  background: #f6f6f6;
+}
+
+#login-heading {
+  flex: 0;
+}
+
+#login-body {
+  flex: 1;
+  flex-basis: 0;
+}
+
+#login-footer {
+  flex: 0;
+  padding: 20px 10px;
+  background: #fff;
+  text-align: right;
+
+  p {
+    margin: 0;
+  }
+}
